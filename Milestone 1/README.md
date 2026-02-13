@@ -24,9 +24,7 @@ $$BMI = \frac{Weight (kg)}{Height (m)^2}$$
 
 ## Screenshots
 ### 1. Athlete Profile Form
-![Profile Form]()
-
-
+![Profile Form](screenshots/form_screenshot.png.png)
 
 ### 2. Successful Submission & BMI Output
-![Results](screenshots/result_screenshot.png)
+![Results](screenshots/result_screenshot.png.png)
