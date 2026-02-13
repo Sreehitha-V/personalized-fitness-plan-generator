@@ -1,6 +1,6 @@
 # 🏋️ FitPlan AI: Personalized Fitness Plan Generator
 
-## Objective
+## Objective of MILESTONE 1
 The objective of this milestone is to develop a foundational web-based fitness profile form that captures essential health data, validates user input, and implements accurate BMI calculation logic.
 
 ## BMI Formula Explanation
