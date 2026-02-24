@@ -26,8 +26,7 @@ The core of this milestone is the "Prompt Builder" logic. To ensure the AI gener
 > "Day 1: Upper Body - Dumbbell Bench Press: 3 sets of 8-10 reps. Dumbbell Rows: 3 sets of 10-12 reps. Overhead Press: 3 sets of 8-10 reps. Ensure 60s rest between sets..."
 
 ## Application Link
-[Live Hugging Face Space Link](https://huggingface.co/spaces/Sreehitha-V/FitPlan)
-
+[[Live Hugging Face Space Link](https://huggingface.co/spaces/Sreehitha-V/FitPlan_1)]
 ## Screenshots
 ### 1. Core AI Inference Module
 ![AI Logic](Milestone2/screenshots/ai_generation_output.png)
