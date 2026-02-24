@@ -1,99 +1,113 @@
 import streamlit as st
+import re  # Aggressive text cleaning
 from prompt_builder import build_prompt
 from model_api import query_model
 
 # Page Config
 st.set_page_config(page_title="PERSONALIZED FITPLAN", layout="centered")
 
+# --- PROFESSIONAL CSS: NO GAPS, NO MESS ---
 st.markdown("""
     <style>
     .stApp {
-        background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
-                    url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070");
+        background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), 
+                     url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070");
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
     }
     
-    h1, h2, h3, label, p, span, .stMarkdown {
+    /* Global Text Styling */
+    h1, h2, h3, label, p, span {
         color: #FFFFFF !important;
-        font-weight: 900 !important;
+        font-weight: 700 !important;
         text-transform: uppercase;
-        letter-spacing: 1px;
     }
-    .stTextInput>div>div>input, 
-    .stNumberInput>div>div>input, 
-    .stSelectbox>div>div>div {
-        background-color: #111111 !important;
-        color: #00FF00 !important;
+    /* THE SUBMIT BUTTON - SOLID BLACK WITH WHITE TEXT */
+    div.stButton > button:first-child {
+        width: 100% !important;
+        background-color: #000000 !important; 
+        color: #FFFFFF !important;            
         font-weight: 900 !important;
-        font-size: 1.1rem !important;
-        height: 55px !important;
-        border-radius: 8px !important;
+        font-size: 1.2rem !important;
+        height: 60px !important;
+        border: 2px solid #FFFFFF !important;
+        border-radius: 10px !important;
     }
-    .stButton>button {
-        width: 100%;
-        background-color: #00FF00 !important;
-        color: #000000 !important;
-        font-weight: 900 !important;
-        height: 60px;
+    /* Tab Styling visibility */
+    .stTabs [aria-selected="true"] { background-color: #FFFFFF !important; }
+    .stTabs [aria-selected="true"] p { color: #000000 !important; }
+    /* PROFESSIONAL OUTPUT BOX - FORCES TIGHT SPACING */
+    .workout-container {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 20px;
         border-radius: 10px;
-        margin-top: 20px;
+        border-left: 5px solid #FFFFFF;
+        color: #FFFFFF;
+        line-height: 1.3 !important; /* Tight spacing to remove gaps */
+        font-size: 1rem;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Header
+# Session State Initialization
+if 'workout_plan' not in st.session_state:
+    st.session_state.workout_plan = ""
+if 'bmi_info' not in st.session_state:
+    st.session_state.bmi_info = ""
+if 'user_name' not in st.session_state:
+    st.session_state.user_name = ""
+
 st.title("🏋️ PERSONALIZED FITPLAN")
-st.markdown("---")
 
-# Athlete Profile
-st.header("Athlete Profile")
-col1, col2 = st.columns(2)
+tab1, tab2 = st.tabs(["📝 ATHLETE PROFILE", "🏆 YOUR WORKOUT PLAN"])
 
-with col1:
-    name = st.text_input("NAME (Required)")
-    gender = st.selectbox("GENDER", ["Male", "Female", "Other"])
-    height_cm = st.number_input("HEIGHT (CM) (Required)", min_value=0.0, step=0.1)
+with tab1:
+    st.header("Build Your Profile")
+    col1, col2 = st.columns(2)
+    with col1:
+        name = st.text_input("NAME (Required)")
+        gender = st.selectbox("GENDER", ["Male", "Female", "Other"])
+        height_cm = st.number_input("HEIGHT (CM)", min_value=1.0)
+    with col2:
+        age = st.number_input("AGE (Required)", min_value=1)
+        weight_kg = st.number_input("WEIGHT (KG)", min_value=1.0)
+        goal = st.selectbox("GOAL", ["Build Muscle", "Weight Loss", "Strength", "Abs", "Flexible"])
 
-with col2:
-    weight_kg = st.number_input("WEIGHT (KG) (Required)", min_value=0.0, step=0.1)
-    goal = st.selectbox("FITNESS GOAL", ["Build Muscle", "Weight Loss", "Strength Gain", "Abs Building", "Flexible"])
-    level = st.selectbox("FITNESS LEVEL", ["Beginner", "Intermediate", "Advanced"])
+    level = st.selectbox("LEVEL", ["Beginner", "Intermediate", "Advanced"])
+    equipment = st.multiselect("EQUIPMENT", ["Dumbbells", "Barbell", "Kettlebells", "Yoga Mat", "Pull-up Bar", "No Equipment"])
 
-equipment_options = [
-    "Dumbbells", "Barbell", "Kettlebells", "Weight Plates",
-    "Resistance Band", "Yoga Mat", "Pull-up Bar", "Bench Press", "No Equipment"
-]
-equipment = st.multiselect("AVAILABLE EQUIPMENT", equipment_options)
+    if st.button("SUBMIT PROFILE"):
+        if not name or height_cm <= 1 or weight_kg <= 1:
+            st.error("🚨 PLEASE FILL IN ALL FIELDS.")
+        else:
+            with st.spinner("GENERATING..."):
+                # Call prompt_builder with the 8 arguments you added
+                prompt, bmi, bmi_status = build_prompt(name, gender, height_cm, weight_kg, goal, level, equipment, age)
+                
+                # Fetch raw response
+                raw_output = query_model(prompt)
+                
+                # --- THE HARD CLEANUP: NO STARS, NO GAPS ---
+                # 1. Delete every asterisk (*)
+                clean_text = re.sub(r'\*', '', raw_output)
+                # 2. Collapse 3 or more newlines into just 2 (Standard spacing)
+                clean_text = re.sub(r'\n{3,}', '\n\n', clean_text)
+                # 3. Trim edge spaces
+                clean_text = clean_text.strip()
+                
+                st.session_state.workout_plan = clean_text
+                st.session_state.bmi_info = f"BMI: {bmi:.2f} | {bmi_status.upper()}"
+                st.session_state.user_name = name.upper()
+                st.success("PROFILE SUBMITTED!")
 
-st.markdown("---")
-
-if st.button("SUBMIT PROFILE"):
-
-    if not name or height_cm <= 0 or weight_kg <= 0:
-        st.error("🚨 VALIDATION FAILED: PLEASE PROVIDE NAME, HEIGHT, AND WEIGHT.")
+with tab2:
+    if st.session_state.workout_plan:
+        st.header(f"🔥 HELLO {st.session_state.user_name}!")
+        st.info(f"📊 {st.session_state.bmi_info}")
+        st.markdown("---")
+        
+        # We use unsafe_allow_html with a custom div to bypass Streamlit's default spacing
+        st.markdown(f'<div class="workout-container">{st.session_state.workout_plan}</div>', unsafe_allow_html=True)
     else:
-        prompt, bmi, bmi_status = build_prompt(
-            name,
-            gender,
-            height_cm,
-            weight_kg,
-            goal,
-            level,
-            equipment
-        )
-
-        st.success(f"PROFILE SUBMITTED SUCCESSFULLY! HELLO {name.upper()}")
-        st.markdown(f"### BMI: {bmi:.2f} | CATEGORY: {bmi_status.upper()}")
-        st.markdown("---")
-
-        with st.spinner("Generating your workout plan..."):
-            workout_plan = query_model(prompt)
-
-        # Clean unwanted markdown symbols
-        workout_plan = workout_plan.replace("**", "")
-
-        st.markdown("## 🏆 YOUR 5-DAY WORKOUT PLAN")
-        st.markdown("---")
-        st.markdown(workout_plan)
+        st.warning("PLEASE SUBMIT YOUR PROFILE FIRST.")
