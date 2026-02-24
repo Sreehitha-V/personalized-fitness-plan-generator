@@ -13,7 +13,7 @@ def bmi_category(bmi):
         return "Obese"
 
 
-def build_prompt(name, gender, height, weight, goal, fitness_level, equipment):
+def build_prompt(name, gender, height, weight, goal, fitness_level, equipment, age):
 
     bmi = calculate_bmi(weight, height)
     bmi_status = bmi_category(bmi)
