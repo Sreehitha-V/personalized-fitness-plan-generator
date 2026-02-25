@@ -28,8 +28,14 @@ The core of this milestone is the "Prompt Builder" logic. To ensure the AI gener
 ## Application Link
 [[Live Hugging Face Space Link](https://huggingface.co/spaces/Sreehitha-V/FitPlan_1)]
 ## Screenshots
-### 1. Core AI Inference Module
-![AI Logic](Milestone 2/screenshots/User Profile.png)
+### 1. User Profile Input
+![User Profile](screenshots/User%20Profile.png)
 
-### 2. Personalized Plan Result
-![Plan Output](Milestone2/screenshots/result_screenshot.png)
+### 2. Scenario 1: Beginner Workout Plan
+![Result 1](screenshots/result_screenshot1.png)
+
+### 3. Scenario 2: Intermediate Workout Plan
+![Result 2](screenshots/result_screenshot2.png)
+
+### 4. Scenario 3: Advanced Workout Plan
+![Result 3](screenshots/result_screenshot3.png)
