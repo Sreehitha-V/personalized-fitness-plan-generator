@@ -6,7 +6,7 @@ def query_model(prompt):
         HF_TOKEN = os.getenv("HF_TOKEN")
 
         client = InferenceClient(
-            model="mistralai/Mistral-7B-Instruct-v0.2",
+            model="Qwen/Qwen2.5-7B-Instruct",
             token=HF_TOKEN
         )
 
