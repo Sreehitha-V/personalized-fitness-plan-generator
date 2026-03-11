@@ -49,11 +49,11 @@ You can interact with the live version of this application on Hugging Face Space
 
 ### 4. Athlete Profile Setup 
 After verification, users provide details (Name, Gender, Age, Weight, Height) and set their fitness goals and available equipment.
-![Profile Setup](./Milestone3/screenshots/Screenshot%203.png)
+![Profile Setup](Screenshots/Screenshot%206.png)
 
-### 4. Plan Formatting Module (Section 3)
-The post-processing logic parses the model's output into a clean, structured 5-day workout plan featuring easy-to-read exercise cards.
-![Workout Plan](./Milestone3/screenshots/Screenshot%205.png)
+### 5. Generated Workout Plan
+![Workout Plan](Screenshots/Screenshot%207.png)
+![Workout Plan](Screenshots/Screenshot%208.png)
 
 ---
 **FitPlan AI** - *Your Personalized Fitness Journey Starts Here.*
