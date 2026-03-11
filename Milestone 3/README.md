@@ -34,7 +34,7 @@ You can interact with the live version of this application on Hugging Face Space
 
 ---
 
-## 📸 Implementation Screenshots
+## Implementation Screenshots
 
 ### 1. Professional Login Interface
 The login screen uses a high-end dual-panel layout. All labels, including the "Remember me" checkbox, are rendered in bold black for maximum visibility.
