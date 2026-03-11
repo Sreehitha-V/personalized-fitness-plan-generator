@@ -36,10 +36,10 @@ You can interact with the live version of this application on Hugging Face Space
 
 ## Implementation Screenshots
 
-### ![Professional Login Interface](Screenshots/Screenshot%201.png)
+### 1. Login Interface
+![Professional Login Interface](Screenshots/Screenshot%201.png)
 
 ### 2. OTP Verification Screen
-The security gate where users enter the 6-digit code received via email to verify their identity.
 ![OTP Verification](Screenshots/Screenshot%202.png)
 
 ### 3. Athlete Profile Setup (Sections 1 & 2)
