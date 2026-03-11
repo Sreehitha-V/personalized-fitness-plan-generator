@@ -42,6 +42,8 @@ You can interact with the live version of this application on Hugging Face Space
 ### 2. OTP Verification Screen
 ![OTP Verification](Screenshots/Screenshot%202.png)
 ![OTP Verification](Screenshots/Screenshot%203.png)
+![OTP Verification](Screenshots/Screenshot%204.png)
+
 
 ### 3. Athlete Profile Setup (Sections 1 & 2)
 After verification, users provide details (Name, Gender, Age, Weight, Height) and set their fitness goals and available equipment.
