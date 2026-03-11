@@ -44,8 +44,10 @@ You can interact with the live version of this application on Hugging Face Space
 ![OTP Verification](Screenshots/Screenshot%203.png)
 ![OTP Verification](Screenshots/Screenshot%204.jpeg)
 
+### 3. Successful Account Creation
+![Account Creation](Screenshots/Screenshot%205.png)
 
-### 3. Athlete Profile Setup (Sections 1 & 2)
+### 4. Athlete Profile Setup 
 After verification, users provide details (Name, Gender, Age, Weight, Height) and set their fitness goals and available equipment.
 ![Profile Setup](./Milestone3/screenshots/Screenshot%203.png)
 
