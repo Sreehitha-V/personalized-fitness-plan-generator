@@ -36,10 +36,7 @@ You can interact with the live version of this application on Hugging Face Space
 
 ## Implementation Screenshots
 
-### 1. Professional Login Interface
-The login screen uses a high-end dual-panel layout. All labels, including the "Remember me" checkbox, are rendered in bold black for maximum visibility.
-!Login Interface 
-()
+### ![Professional Login Interface](./Milestone%203/screenshots/Screenshot%201.png)
 
 ### 2. OTP Verification Screen
 The security gate where users enter the 6-digit code received via email to verify their identity.
