@@ -42,7 +42,7 @@ You can interact with the live version of this application on Hugging Face Space
 ### 2. OTP Verification Screen
 ![OTP Verification](Screenshots/Screenshot%202.png)
 ![OTP Verification](Screenshots/Screenshot%203.png)
-![OTP Verification](Screenshots/Screenshot%204.png)
+![OTP Verification](Screenshots/Screenshot%204.jpeg)
 
 
 ### 3. Athlete Profile Setup (Sections 1 & 2)
