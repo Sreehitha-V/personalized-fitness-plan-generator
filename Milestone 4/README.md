@@ -29,7 +29,7 @@ The project has been organized into a modular architecture for scalability and m
 ## 🚀 Live Demonstration
 The finalized **FitPlan AI** application is live on Hugging Face Spaces:
 
-**Live Link:** [](https://huggingface.co/spaces/Sreehitha-V/Personalized_fitness_generator_DUP_)
+[!**Live Link:**] https://huggingface.co/spaces/Sreehitha-V/Personalized_fitness_generator_DUP_
 
 ---
 **FitPlan AI** - *Your Personalized Fitness Journey, Finalized.*
