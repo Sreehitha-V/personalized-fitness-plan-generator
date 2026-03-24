@@ -30,7 +30,7 @@ The project is organized into a modular structure to handle authentication, mult
 ## 🚀 Live Demo
 You can interact with the live version of this application on Hugging Face Spaces:
 
-**Hugging Face Live Link:** (https://huggingface.co/spaces/Sreehitha-V/FIT_PLAN_
+[**Hugging Face Live Link:**](https://huggingface.co/spaces/Sreehitha-V/FIT_PLAN_B)
 
 ---
 
