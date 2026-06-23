@@ -70,23 +70,9 @@ FitPlan-AI/
 
 ---
 
-## 🚀 Live Demo
-
-🔗 **Hugging Face Spaces:**
-(https://huggingface.co/spaces/Sreehitha-V/FitPlan_AI_APersonalizedFitnessPlanGenerator)
+## 🚀 **Live Demo:**
+https://huggingface.co/spaces/Sreehitha-V/FitPlan_AI_APersonalizedFitnessPlanGenerator
 ---
-
-## ⚙️ Installation
-
-```bash
-git clone <repository-url>
-cd FitPlan-AI
-
-pip install -r requirements.txt
-
-streamlit run app.py
-```
-
 ---
 
 ## 🎯 Future Enhancements
